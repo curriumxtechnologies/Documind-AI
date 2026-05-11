@@ -11,7 +11,12 @@ export default function ChatBox({ activeDocument }) {
   const bottomRef = useRef(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messages.length > 0 || asking) {
+      bottomRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
   }, [messages, asking]);
 
   const submitQuestion = async (event) => {
