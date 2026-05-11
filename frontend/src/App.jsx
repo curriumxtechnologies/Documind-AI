@@ -119,13 +119,13 @@ export default function App() {
           </div>
         </section>
 
-        <section id="upload" className="grid gap-6 py-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <section id="upload" className="grid min-w-0 gap-6 py-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <div className="space-y-6">
             <UploadBox onUploaded={setActiveDocument} />
             <Sidebar activeDocument={activeDocument} />
           </div>
 
-          <div id="chat">
+          <div id="chat" className="min-w-0 max-w-full overflow-hidden">
             <ChatBox activeDocument={activeDocument} />
           </div>
         </section>

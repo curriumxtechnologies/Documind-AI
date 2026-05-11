@@ -25,6 +25,12 @@ body {
   animation: float 8s ease-in-out infinite;
 }
 
+.force-wrap {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+}
+
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
