@@ -7,5 +7,4 @@ chromadb
 python-dotenv
 pydantic
 groq
-sentence-transformers
-torch
+numpy
