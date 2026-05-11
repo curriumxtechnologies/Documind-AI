@@ -4,6 +4,8 @@ python-multipart
 pypdf
 python-docx
 chromadb
-openai
 python-dotenv
 pydantic
+groq
+sentence-transformers
+torch
