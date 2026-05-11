@@ -66,7 +66,7 @@ export default function ChatBox({ activeDocument }) {
   };
 
   return (
-    <div className="glass flex h-[680px] w-full min-w-0 max-w-full flex-col overflow-hidden rounded-3xl">
+    <div className="glass flex h-170 w-full min-w-0 max-w-full flex-col overflow-hidden rounded-3xl">
       <div className="min-w-0 border-b border-slate-800 p-5">
         <h3 className="truncate text-lg font-semibold text-white">
           Ask DocuMind AI
@@ -102,7 +102,7 @@ export default function ChatBox({ activeDocument }) {
                   <span className="truncate">You · {message.time}</span>
                 </div>
 
-                <div className="break-words [overflow-wrap:anywhere]">
+                <div className="wrap-break-word">
                   {message.question}
                 </div>
               </div>

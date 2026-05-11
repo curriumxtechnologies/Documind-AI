@@ -35,14 +35,14 @@ export default function AnswerCard({ message }) {
         </button>
       </div>
 
-      <div className="max-h-[320px] overflow-y-auto overflow-x-hidden pr-2 text-sm leading-7 text-slate-200">
-        <div className="whitespace-pre-wrap break-words">
+      <div className="max-h-80 overflow-y-auto overflow-x-hidden pr-2 text-sm leading-7 text-slate-200">
+        <div className="whitespace-pre-wrap wrap-break-word">
           {message.answer}
         </div>
       </div>
 
       {message.sources?.length > 0 && (
-        <div className="mt-5 max-h-[260px] space-y-3 overflow-y-auto overflow-x-hidden pr-2">
+        <div className="mt-5 max-h-65 space-y-3 overflow-y-auto overflow-x-hidden pr-2">
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
             Sources
           </p>
