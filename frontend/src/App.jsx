@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Sparkles } from "lucide-react";
 import UploadBox from "./components/UploadBox";
 import ChatBox from "./components/ChatBox";
 
@@ -12,15 +11,18 @@ export default function App() {
       <header className="border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-purple-600 flex items-center justify-center">
-              <Sparkles size={14} className="text-white" />
-            </div>
+            {/* Your Logo */}
+            <img 
+              src="/logo.png" 
+              alt="DocuMind AI Logo" 
+              className="w-7 h-7 object-contain"
+            />
             <span className="font-semibold text-gray-800 dark:text-gray-100 text-sm">
               DocuMind AI
             </span>
           </div>
           {activeDocument && (
-            <div className="text-xs text-gray-500 dark:text-gray-400 truncate max-w-50">
+            <div className="text-xs text-gray-500 dark:text-gray-400 truncate max-w-[200px]">
               {activeDocument.name}
             </div>
           )}
