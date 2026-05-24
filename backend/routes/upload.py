@@ -23,10 +23,15 @@ documents_registry = {}
 
 @router.post("")
 async def upload_document(file: UploadFile = File(...)):
+    print(f"Received file: {file.filename}")  # DEBUG
+    
     allowed_extensions = [".pdf", ".docx", ".txt"]
     extension = Path(file.filename).suffix.lower()
+    
+    print(f"File extension: {extension}")  # DEBUG
 
     if extension not in allowed_extensions:
+        print(f"Extension {extension} not allowed")  # DEBUG
         raise HTTPException(
             status_code=400,
             detail="Unsupported file type. Only PDF, DOCX, and TXT files are allowed."
@@ -39,13 +44,16 @@ async def upload_document(file: UploadFile = File(...)):
     try:
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
+        print(f"File saved to: {file_path}")  # DEBUG
 
         extracted_pages = extract_text(file_path)
+        print(f"Extracted pages: {len(extracted_pages) if extracted_pages else 0}")  # DEBUG
 
         chunks = chunk_document(
             document_id=document_id,
             extracted_pages=extracted_pages
         )
+        print(f"Created chunks: {len(chunks) if chunks else 0}")  # DEBUG
 
         if not chunks:
             raise HTTPException(
@@ -55,8 +63,10 @@ async def upload_document(file: UploadFile = File(...)):
 
         texts = [chunk["text"] for chunk in chunks]
         embeddings = generate_embeddings(texts)
+        print(f"Generated embeddings: {len(embeddings)}")  # DEBUG
 
         add_chunks_to_vector_store(chunks, embeddings)
+        print("Added to vector store")  # DEBUG
 
         documents_registry[document_id] = {
             "document_id": document_id,
@@ -82,6 +92,7 @@ async def upload_document(file: UploadFile = File(...)):
         raise
 
     except Exception as error:
+        print(f"Error: {str(error)}")  # DEBUG
         raise HTTPException(
             status_code=500,
             detail=f"Upload failed: {str(error)}"

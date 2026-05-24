@@ -11,11 +11,10 @@ export const uploadDocument = async (file, onUploadProgress) => {
   const formData = new FormData();
   formData.append("file", file);
 
+  // DON'T manually set Content-Type - let Axios set it with the correct boundary
   const response = await api.post("/upload", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data"
-    },
     onUploadProgress
+    // Remove the headers section entirely
   });
 
   return response.data;
